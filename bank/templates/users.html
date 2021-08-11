@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>All Users</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="dashboard">
+            <p class="dashboard-heading">Dashboard</p>
+            <ul class="dashboard-details">
+                <a href="/">
+                    <li><span><i class="fa fa-home" aria-hidden="true"></i></span> Home</li>
+                </a>
+                <a href="#">
+                    <li class="active"><span><i class="fa fa-user" aria-hidden="true"></i></span> Users</li>
+                </a>
+                <a href="/transfer/">
+                    <li><span><i class="fa fa-exchange" aria-hidden="true"></i></span> Transfer</li>
+                </a>
+            </ul>
+        </div>
+        <div class="container">
+            <h1 class="detail-heading">All Users Details</h1>
+            <input type="text" id="myInput" onkeyup="search()" placeholder="Search for account no..." title="Type in a name">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Acc No.</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    {% for i in customer %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.cust_name}}</td>
+                        <td><a href="/profile/{{i.id}}"><button class="view">View</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/static/js/index.js"></script>
+</body>
+
+</html>

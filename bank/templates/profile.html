@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Profile</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="dashboard">
+            <p class="dashboard-heading">Dashboard</p>
+            <ul class="dashboard-details">
+                <a href="/">
+                    <li><span><i class="fa fa-home" aria-hidden="true"></i></span> Home</li>
+                </a>
+                <a href="#">
+                    <li class="active"><span><i class="fa fa-user" aria-hidden="true"></i></span> Profile</li>
+                </a>
+                <a href="/transfer/">
+                    <li><span><i class="fa fa-exchange" aria-hidden="true"></i></span> Transfer</li>
+                </a>
+            </ul>
+        </div>
+        <div class="container">
+            <h1 class="detail-heading">Account Holder's Details</h1>
+            <div class="profile">
+                {% if profile %}
+                {% for i in profile %}
+                <ul>
+                    <li>Account No.: {{i.id}}</li>
+                    <li>Name: {{i.cust_name}}</li>
+                    <li>Email ID: {{i.cust_email}}</li>
+                    <li>Current Balance: &#x20B9; {{i.cust_balance}} /-</li>
+                </ul>
+                {% endfor %}
+                {% else %}
+                <h1 class="result">No results found</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if transferhistory %}
+    <div class="transfer-table">
+        <h1 class="detail-heading">Transfer Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Receiver's Acc No.</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                {% for i in transferhistory %}
+                <tr>
+                    <td>{{i.acc2}}</td>
+                    <td>&#x20B9; {{i.bal}}</td>
+                    <td>{{i.date}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    <script src="/static/js/index.js"></script>
+</body>
+
+</html>

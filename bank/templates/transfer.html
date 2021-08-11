@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Transfer</title>
+</head>
+
+<body>
+    {% for message in messages %}
+    <div class="msg {{ message.tags }}">Messages: {{message}}</div>
+    {% endfor %}
+    <div class="main-container">
+        <div class="dashboard">
+            <p class="dashboard-heading">Dashboard</p>
+            <ul class="dashboard-details">
+                <a href="/">
+                    <li><span><i class="fa fa-home" aria-hidden="true"></i></span> Home</li>
+                </a>
+                <a href="/users/">
+                    <li><span><i class="fa fa-user" aria-hidden="true"></i></span> Users</li>
+                </a>
+                <a href="#">
+                    <li class="active"><span><i class="fa fa-exchange" aria-hidden="true"></i></span> Transfer</li>
+                </a>
+            </ul>
+        </div>
+        <div class="container">
+            <h1 class="detail-heading">Transfer</h1>
+            <div class="transfer">
+                <div class="partition"></div>
+                <form action="/handletransfer/" method="POST">
+                    {% csrf_token %}
+                    <div class="acc1">
+                        <h2 class="acc-header">Sender's Details</h2>
+                        <input type="text" name="sname" placeholder="Sender's Name" required>
+                        <input type="number" name="acc1" placeholder="Sender's Account No." required>
+                        <input type="number" name="bal" placeholder="Amount in Rs /-" required>
+                    </div>
+                    <div class="acc2">
+                        <h2 class="acc-header">Receiver's Details</h2>
+                        <input type="text" name="rname" placeholder="Receiver's Name" required>
+                        <input type="number" name="acc2" placeholder="Receiver's Account No." required>
+                        <input type="text" name="comment" placeholder="Any Comments">
+                    </div>
+                    <button class="transfer-btn" type="submit">Transfer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/index.js"></script>
+</body>
+
+</html>
