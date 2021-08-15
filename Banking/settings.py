@@ -26,7 +26,7 @@ SECRET_KEY = 'msz@)5-(w@vd$wmf54^lcjw0(bn&ms-cy=xabg1x!zl*#n2+yn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','bankfeatgrip.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
