@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Customers, Transfer
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
