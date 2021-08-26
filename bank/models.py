@@ -12,14 +12,12 @@ class Customers(models.Model):
         return self.cust_name
 
 class Transfer(models.Model):
-    sname=models.CharField(max_length=20)
-    acc1=models.IntegerField()
+    sender=models.IntegerField()
+    receiver=models.IntegerField()
     bal=models.IntegerField()
-    rname=models.CharField(max_length=20)
-    acc2=models.IntegerField()
     comment=models.CharField(max_length=20)
     status=models.CharField(max_length=20)
     date = models.DateField(default=datetime.now)
 
     def __str__(self):
-        return f"""{self.acc1} -> {self.acc2}"""
+        return f"""{self.sender} -> {self.receiver}"""

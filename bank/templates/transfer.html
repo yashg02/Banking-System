@@ -32,22 +32,27 @@
         <div class="container">
             <h1 class="detail-heading">Transfer</h1>
             <div class="transfer">
-                <div class="partition"></div>
                 <form action="/handletransfer/" method="POST">
                     {% csrf_token %}
-                    <div class="acc1">
-                        <h2 class="acc-header">Sender's Details</h2>
-                        <input type="text" name="sname" placeholder="Sender's Name" required>
-                        <input type="number" name="acc1" placeholder="Sender's Account No." required>
+                    <div class="acc">
+                        <select class="select-user" name="sender">
+                            <option value="0" disabled selected>Sender's Details</option>
+                            {% for i in customer %}
+                            <option value="{{i.id}}">{{i.cust_name}} (Balance: &#x20B9; {{i.cust_balance}})
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <select class="select-user" name="receiver">
+                            <option value="0" disabled selected>Receiver's Details</option>
+                            {% for i in customer %}
+                            <option value="{{i.id}}">{{i.cust_name}} (Balance: &#x20B9; {{i.cust_balance}})
+                            </option>
+                            {% endfor %}
+                        </select>
                         <input type="number" name="bal" placeholder="Amount in Rs /-" required>
+                        <input type="text" name="comment" placeholder="Any Comments" maxlength="50">
+                        <button class="transfer-btn" type="submit">Transfer</button>
                     </div>
-                    <div class="acc2">
-                        <h2 class="acc-header">Receiver's Details</h2>
-                        <input type="text" name="rname" placeholder="Receiver's Name" required>
-                        <input type="number" name="acc2" placeholder="Receiver's Account No." required>
-                        <input type="text" name="comment" placeholder="Any Comments">
-                    </div>
-                    <button class="transfer-btn" type="submit">Transfer</button>
                 </form>
             </div>
         </div>

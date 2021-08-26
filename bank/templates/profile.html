@@ -53,14 +53,16 @@
                     <th>Receiver's Acc No.</th>
                     <th>Amount</th>
                     <th>Date</th>
+                    <th>Comment</th>
                 </tr>
             </thead>
             <tbody id="tbody">
                 {% for i in transferhistory %}
                 <tr>
-                    <td>{{i.acc2}}</td>
+                    <td>{{i.receiver}}</td>
                     <td>&#x20B9; {{i.bal}}</td>
                     <td>{{i.date}}</td>
+                    <td>{{i.comment}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
